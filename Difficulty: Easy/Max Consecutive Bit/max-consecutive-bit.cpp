@@ -2,17 +2,22 @@ class Solution {
   public:
     int maxConsecBits(vector<int> &arr) {
         // code here
-        int count=0;
-        int maxcount=0;
-        for(int i=0;i<arr.size()-1;i++){
-            int curr=arr[i];
-        if(arr[i+1]==curr){
-            count++;
-            maxcount=max(maxcount,count);
-            continue;
+        int cnt0=0;
+        int cnt1=0;
+        int maxi=INT_MIN;
+        int temp=arr[0];
+        for(int i=0; i<arr.size(); i++){
+            if(arr[i]==0){
+                cnt0++;
+                cnt1=0;
+                maxi=max(maxi,cnt0);
+            }
+            else{
+                cnt1++;
+                cnt0=0;
+                maxi=max(maxi,cnt1);
+            }
         }
-        count=0;
-        }
-        return maxcount+1;
+        return maxi;
     }
 };
