@@ -2,14 +2,27 @@ class Solution {
   public:
     vector<int> sumTriangles(vector<vector<int>>& mat) {
         // code here
+        int us=0,ls=0;
         int n=mat.size();
-        int us=0;
-        int ls=0;
-        for(int i=0; i<n; i++){
-            for(int j=0; j<n; j++){
-                if(i==j || i<j) us+=mat[i][j];
-                if(i==j || i>j) ls+=mat[i][j];
+        int i=0,j=0;
+        while(i<n){
+            int k=j;
+            while(k<n){
+                us+=mat[i][k];
+                k++;
             }
+            j++;
+            i++;
+        }
+        i=0,j=0;
+        while(i<n){
+            int k=0;
+            while(k<=j){
+                ls+=mat[i][k];
+                k++;
+            }
+            j++;
+            i++;
         }
         return {us,ls};
     }
