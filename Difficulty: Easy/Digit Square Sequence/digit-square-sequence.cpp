@@ -1,0 +1,23 @@
+class Solution {
+  public:
+  int getsum(int n){
+        int sum=0;
+        while(n){
+            int digit=n%10;
+            sum+=digit*digit;
+            n=n/10;
+        }
+        return sum;
+    }
+    bool reachesOne(int n) {
+        // code here
+        int slow=n;
+        int fast=n;
+        do{
+            slow=getsum(slow);
+            fast=getsum(getsum(fast));
+        }while(slow!=fast);
+        if(slow==1) return true;
+        else return false;
+    }
+};
