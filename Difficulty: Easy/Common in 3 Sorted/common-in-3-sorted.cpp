@@ -1,0 +1,23 @@
+class Solution {
+  public:
+    vector<int> commonElements(vector<int> &a, vector<int> &b, vector<int> &c) {
+        // code here
+        int m=a.size(), n=b.size(), p=c.size();
+        vector<int> ans;
+        int i=0, j=0, k=0;
+        while(i<m && j<n && k<p){
+            if(a[i]==b[j] && b[j]==c[k]){
+                if(ans.empty() || ans.back()!=a[i]){
+                    ans.push_back(a[i]);
+                }
+                i++;
+                j++;
+                k++;
+            }
+            else if(a[i]<b[j]) i++;
+            else if(b[j]<c[k]) j++;
+            else k++;
+        }
+        return ans;
+    }
+};
